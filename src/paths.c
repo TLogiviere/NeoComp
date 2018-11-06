@@ -14,7 +14,7 @@ static void add_xdg_home(Vector *scratch, const char* appPath, size_t appPath_le
         if(conf_dir == NULL) {
             if(home != NULL) {
                 vector_putListBack(scratch, home, home_len);
-                vector_putListBack(scratch, "/.config/", 9);
+                vector_putListBack(scratch, "/.config", 9);
             }
         } else {
             vector_putListBack(scratch, conf_dir, strlen(conf_dir));
@@ -29,7 +29,7 @@ static void add_xdg_home(Vector *scratch, const char* appPath, size_t appPath_le
 static void add_xdg_config_dirs(Vector* scratch, char* appPath, size_t appPath_len) {
     char* conf_dirs = getenv("XDG_CONFIG_DIRS");
     if(conf_dirs == NULL) {
-        conf_dirs = "/etc/xdg/";
+        conf_dirs = "/etc/xdg";
     }
 
     char* part_end;
@@ -51,7 +51,7 @@ void add_xdg_asset_paths() {
     Vector curPath;
     vector_init(&curPath, sizeof(char), 64);
 
-    char* appPath = "/neocomp/assets/";
+    char* appPath = "/neocomp/assets";
     size_t appPath_len = 16;
 
     add_xdg_home(&curPath, appPath, appPath_len);

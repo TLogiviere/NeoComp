@@ -3798,7 +3798,8 @@ XSynchronize(ps->dpy, 1);
   assets_add_handler(struct shader_program, "shader", shader_program_load_file,
       shader_program_unload_file);
 
-  assets_add_path("./assets/");
+  assets_add_path("./assets");
+  assets_add_path("/etc/neocomp/assets");
   add_xdg_asset_paths();
 
   // Initialize OpenGL as early as possible
